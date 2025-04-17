@@ -27,3 +27,9 @@ Alors, qu'est-ce que vous aimeriez savoir ou discuter ? 🤔 Je suis à votre é
 **Q** : Je reçois un message "`Une erreur est survenue lors de la génération du texte. Réessayez plus tard.`" quand je tente de générer un texte, que faire ?
 
 **R** : Il suffit de réessayer, ce phénomène est passager, il suffit donc d'attendre quelques secondes à quelques minutes avant un retour à la normale. Si le phénomène se reproduit très souvent, ou alors que vous ne recevez même plus de messages d'erreur, je vous invite à me contacter grâce à la commande `/contact`.
+
+---
+
+**Q** : Le bot me répond des messages étranges, que faire ?
+
+**R** : Il s'agit d'un bug connu, et je vous invite à me contacter via la commande `/contact` pour que je puisse le corriger. En attendant, vous pouvez essayer de reformuler votre question ou d'utiliser une autre commande.
