@@ -19,17 +19,7 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
 
-      - name: Check for changed markdown files
-        id: mdcheck
-        run: |
-          # Liste des fichiers .md (hors README.md) modifiés ou ajoutés dans le push
-          git fetch origin main
-          git diff --name-only origin/main | grep -E '\.md$' | grep -v '^README\.md$' > changed_md.txt || true
-          COUNT=$(wc -l < changed_md.txt)
-          echo "changed_count=$COUNT" >> $GITHUB_OUTPUT
-
       - name: Generate dynamic documentation section
-        if: steps.mdcheck.outputs.changed_count != '0'
         run: |
           START_MARKER="<!-- START_CONTENT -->"
           END_MARKER="<!-- END_CONTENT -->"
@@ -67,7 +57,6 @@ jobs:
           mv "$TMP_FILE" README.md
 
       - name: Commit and push changes
-        if: steps.mdcheck.outputs.changed_count != '0'
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
