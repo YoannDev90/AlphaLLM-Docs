@@ -69,9 +69,11 @@ jobs:
           git fetch origin main
           git reset --hard origin/main
 
-          git add README.md
-          git commit -m "📚 Mise à jour automatique de la documentation"
-          git pull --rebase origin main
-          git push origin main
-
+          if ! git diff --quiet; then
+            git add README.md
+            git commit -m "📚 Mise à jour automatique de la documentation"
+            git pull --rebase origin main
+            git push origin main
+          else
+            echo "Aucun changement détecté."
           fi
