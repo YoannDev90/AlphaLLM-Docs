@@ -5,24 +5,26 @@ on:
       - '**.md'
       - '!README.md'
 
+permissions:
+  contents: write
+
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Generate dynamic content
         run: |
           # Création du contenu dynamique
           CONTENT=$(find . -name "*.md" ! -name "README.md" | sort | xargs -I {} sh -c 'echo "\n## {}"; cat {}')
-          
+
           # Mise à jour du README avec awk
           awk -v content="$CONTENT" '
             /<!-- START_CONTENT -->/ { print; print content; skip=1; next }
             /<!-- END_CONTENT -->/ { skip=0 }
             !skip { print }
           ' README.md > TEMP.md
-          
+
           mv TEMP.md README.md
 
       - name: Commit changes
