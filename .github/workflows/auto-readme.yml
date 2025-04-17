@@ -22,36 +22,35 @@ jobs:
         run: |
           START_MARKER="<!-- START_CONTENT -->"
           END_MARKER="<!-- END_CONTENT -->"
-          TMP="README.tmp.md"
+          TMP_FILE=$(mktemp)
 
-          # Génère le contenu à insérer
+          # Génération du contenu
           DOCS_CONTENT=$(find . -name "*.md" ! -name "README.md" | sort | xargs -I {} sh -c 'echo -e "\n## {}"; cat {}; echo -e "\n---"')
 
-          # Construit le nouveau README
+          # Mise à jour du README
           awk -v start="$START_MARKER" -v end="$END_MARKER" -v content="$DOCS_CONTENT" '
             BEGIN {in_block=0}
             $0 ~ start {print; print content; in_block=1; next}
             $0 ~ end {in_block=0}
             !in_block {print}
-          ' README.md > "$TMP"
+          ' README.md > "$TMP_FILE"
 
-          mv "$TMP" README.md
+          mv "$TMP_FILE" README.md
 
       - name: Commit and push changes
         run: |
           git config user.name "GitHub Actions"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          # Synchronisation robuste
-          git remote set-url origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}"
-          git fetch --force origin main:origin_main
-          git branch --force main origin_main
-          git checkout main
-
-          # Gestion des modifications
+          # Synchronisation sécurisée
+          git fetch origin main
+          git reset --hard origin/main
+          
           if ! git diff --quiet; then
             git add README.md
             git commit -m "📚 Mise à jour dynamique de la documentation"
             git pull --rebase origin main
             git push origin main
+          else
+            echo "Aucun changement détecté."
           fi
