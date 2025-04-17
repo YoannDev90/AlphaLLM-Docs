@@ -17,10 +17,9 @@ jobs:
         run: |
           sudo apt-get update && sudo apt-get install -y tree
           tree -I '.git|node_modules' -a -F > tree.txt
-          cat tree.txt
-          echo '```'
+          echo '```' > tree_block.txt
           cat tree.txt >> tree_block.txt
-          echo '```' >> tree_block.txt
+          echo '```'
 
 
       - name: Insert file tree into README
