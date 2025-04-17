@@ -40,6 +40,11 @@ jobs:
 
           # Ajoute le contenu de chaque fichier, séparé par une ligne horizontale
           for f in $FILES; do
+            fname=$(basename "$f")
+            echo "📝 Fichier : $fname"
+            echo "----------"
+            cat "$f"
+            echo "----------"
             echo "" >> docs_content.md
             cat "$f" >> docs_content.md
             echo -e "\n\n---\n" >> docs_content.md
@@ -64,11 +69,9 @@ jobs:
           git fetch origin main
           git reset --hard origin/main
 
-          if ! git diff --quiet; then
-            git add README.md
-            git commit -m "📚 Mise à jour automatique de la documentation"
-            git pull --rebase origin main
-            git push origin main
-          else
-            echo "Aucun changement détecté."
+          git add README.md
+          git commit -m "📚 Mise à jour automatique de la documentation"
+          git pull --rebase origin main
+          git push origin main
+
           fi
