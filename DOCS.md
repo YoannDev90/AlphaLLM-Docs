@@ -14,7 +14,7 @@
 ```html
 /image prompt:"Un phare futuriste sur une planète extraterrestre, aurores boréales" size:2048x1024 model:SDXL
 ```
-![Un phare futuriste sur une planète extraterrestre, aurores boréales](lighthouse.png)
+![Un phare futuriste sur une planète extraterrestre, aurores boréales](assets/lighthouse.png)
 
 ## 🌟 `/multimage` - Génération multiple
 **Paramètres additionnels** :
@@ -27,7 +27,7 @@
 /multimage prompt:"Un loup blanc majestueux se tient sur un rocher moussu au milieu d'une ancienne forêt enchantée à l'aube. La fourrure du loup est illuminée par la douce lumière dorée du soleil qui filtre à travers les grands pins brumeux. De minuscules lucioles bleues flottent autour de lui et de délicates fleurs sauvages fleurissent à ses pieds. La scène est peinte dans un style hyperréaliste, avec des détails complexes sur la fourrure du loup et la texture de la mousse. L'atmosphère est sereine, magique et légèrement mystérieuse, évoquant le sentiment d'une illustration de conte de fées." number:3 size:1024x768 enhance:True
 ```
 
-![Un loup blanc majestueux se tient sur un rocher moussu au milieu d'une ancienne forêt enchantée à l'aube. La fourrure du loup est illuminée par la douce lumière dorée du soleil qui filtre à travers les grands pins brumeux. De minuscules lucioles bleues flottent autour de lui et de délicates fleurs sauvages fleurissent à ses pieds. La scène est peinte dans un style hyperréaliste, avec des détails complexes sur la fourrure du loup et la texture de la mousse. L'atmosphère est sereine, magique et légèrement mystérieuse, évoquant le sentiment d'une illustration de conte de fées.](wolf.png)
+![Un loup blanc majestueux se tient sur un rocher moussu au milieu d'une ancienne forêt enchantée à l'aube. La fourrure du loup est illuminée par la douce lumière dorée du soleil qui filtre à travers les grands pins brumeux. De minuscules lucioles bleues flottent autour de lui et de délicates fleurs sauvages fleurissent à ses pieds. La scène est peinte dans un style hyperréaliste, avec des détails complexes sur la fourrure du loup et la texture de la mousse. L'atmosphère est sereine, magique et légèrement mystérieuse, évoquant le sentiment d'une illustration de conte de fées.](assets/wolf.png)
 
 ## 📌 Bonnes pratiques
 > 💡 **Astuce** : Plus le prompt est descriptif, meilleurs sont les résultats. Incluez :
@@ -48,7 +48,7 @@
 
 ## 🎨 Exemples de résultats
 
-![Chat astronautique dans un vaisseau spatial, dessin animé Pixar](spaceship.png)
+![Chat astronautique dans un vaisseau spatial, dessin animé Pixar](assets/spaceship.png)
 
 **Paramètres de génération** :  
 | 📝 Prompt       | ⚙️ Modèle | 📐 Taille   | 🧠 Amélioration | 🔒 Privée |  
@@ -58,7 +58,7 @@
 
 ---
 
-![Ville flottante dans les nuages, architecture néo-classique](sky-city.png) 
+![Ville flottante dans les nuages, architecture néo-classique](assets/sky-city.png) 
 
 **Paramètres de génération** :  
 | 📝 Prompt       | ⚙️ Modèle | 📐 Taille | 🧠 Amélioration |  
@@ -67,7 +67,7 @@
 
 
 ---
-![Dragon cybernétique entouré de fleurs numériques, style steampunk](dragon.png)
+![Dragon cybernétique entouré de fleurs numériques, style steampunk](assets/dragon.png)
 
 
 **Paramètres de génération** :  
