@@ -37,21 +37,21 @@ jobs:
 
           mv "$TMP" README.md
 
-      - name: Commit and push if changed
+      - name: Commit and push changes
         run: |
           git config user.name "GitHub Actions"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # Synchronisation robuste
+          git remote set-url origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}"
+          git fetch --force origin main:origin_main
+          git branch --force main origin_main
+          git checkout main
 
-          # Synchronise avec la branche distante pour éviter les conflits
-          git fetch origin
-          git rebase origin/main
-
-          # Commit si modification
+          # Gestion des modifications
           if ! git diff --quiet; then
             git add README.md
             git commit -m "📚 Mise à jour dynamique de la documentation"
             git pull --rebase origin main
-            git push origin HEAD:main
-          else
-            echo "Aucun changement à pousser."
+            git push origin main
           fi
