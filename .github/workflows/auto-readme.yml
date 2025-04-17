@@ -5,6 +5,7 @@ on:
     paths:
       - '**.md'
       - '!README.md'
+  workflow_dispatch:  # Permet le déclenchement manuel par bouton
 
 permissions:
   contents: write
