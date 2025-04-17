@@ -2,13 +2,13 @@
 
 ## `/image` - Génération d'une image unique
 **Paramètres** :
-| Émoji | Paramètre     | Description                                                                 | Valeur par défaut | Exemple          |
-|-------|---------------|-----------------------------------------------------------------------------|-------------------|------------------|
-| 📝    | `Prompt`      | Description détaillée de l'image (**obligatoire**)                         | -                 | "Un dragon cybernétique entouré de fleurs numériques, style steampunk" |
-| ⚙️    | `Modèle`      | Choix du modèle (`Flux` ou `SDXL`)                                         | `Flux`            | `SDXL`           |
-| 📐    | `Taille`      | Dimensions au format `{largeur}x{hauteur}`                                     | `1024x1024`       | `768x512`        |
-| 🔒    | `Privée`      | `True` pour garder l'image privée                                          | `False`           | `True`           |
-| 🧠    | `Amélioration`| `True` pour amélioration automatique du prompt par IA                      | `False`           | `True`           |
+| Émoji | Paramètre     | Description                                                                 | Valeur par défaut |
+|-------|---------------|-----------------------------------------------------------------------------|-------------------|
+| 📝    | `prompt`      | Description détaillée de l'image (**obligatoire**)                         | -                 |
+| ⚙️    | `model`      | Choix du modèle (`Flux` ou `SDXL`)                                         | `Flux`            |
+| 📐    | `size`      | Dimensions au format `{largeur}x{hauteur}`                                     | `1024x1024`       |
+| 🔒    | `private`      | `True` pour garder l'image privée                                          | `False`           |
+| 🧠    | `enhance`| `True` pour amélioration automatique du prompt par IA                      | `False`           |
 
 **Exemple complet** :
 ```html
@@ -18,9 +18,9 @@
 
 ## 🌟 `/multimage` - Génération multiple
 **Paramètres additionnels** :
-| Émoji | Paramètre | Description                          | Valeur par défaut | Exemple |
-|-------|-----------|--------------------------------------|-------------------|---------|
-| 🔢    | `Nombre`  | Nombre d'images (max 4)              | `2`               | `4`     |
+| Émoji | Paramètre | Description                          | Valeur par défaut |
+|-------|-----------|--------------------------------------|-------------------|
+| 🔢    | `number`  | Nombre d'images (max 4)              | `2`               |
 
 **Exemple avancé** :
 ```html
