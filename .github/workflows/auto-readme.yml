@@ -1,4 +1,5 @@
 name: Update README Dynamically
+
 on:
   push:
     paths:
@@ -18,16 +19,44 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
 
+      - name: Check for changed markdown files
+        id: mdcheck
+        run: |
+          # Liste des fichiers .md (hors README.md) modifiés ou ajoutés dans le push
+          git fetch origin main
+          git diff --name-only origin/main | grep -E '\.md$' | grep -v '^README\.md$' > changed_md.txt || true
+          COUNT=$(wc -l < changed_md.txt)
+          echo "changed_count=$COUNT" >> $GITHUB_OUTPUT
+
       - name: Generate dynamic documentation section
+        if: steps.mdcheck.outputs.changed_count != '0'
         run: |
           START_MARKER="<!-- START_CONTENT -->"
           END_MARKER="<!-- END_CONTENT -->"
           TMP_FILE=$(mktemp)
 
-          # Génération du contenu
-          DOCS_CONTENT=$(find . -name "*.md" ! -name "README.md" | sort | xargs -I {} sh -c 'echo -e "\n## {}"; cat {}; echo -e "\n---"')
+          # Liste triée des fichiers .md à documenter (hors README)
+          FILES=$(find . -maxdepth 1 -name "*.md" ! -name "README.md" | sort)
 
-          # Mise à jour du README
+          # Génère la table des fichiers avec liens
+          echo "# 📚 Documentation Index" > docs_content.md
+          echo "" >> docs_content.md
+          for f in $FILES; do
+            fname=$(basename "$f")
+            echo "- [${fname}]($fname)" >> docs_content.md
+          done
+          echo "" >> docs_content.md
+
+          # Ajoute le contenu de chaque fichier, séparé par une ligne horizontale
+          for f in $FILES; do
+            echo "" >> docs_content.md
+            cat "$f" >> docs_content.md
+            echo -e "\n\n---\n" >> docs_content.md
+          done
+
+          DOCS_CONTENT=$(cat docs_content.md)
+
+          # Met à jour le README entre les marqueurs
           awk -v start="$START_MARKER" -v end="$END_MARKER" -v content="$DOCS_CONTENT" '
             BEGIN {in_block=0}
             $0 ~ start {print; print content; in_block=1; next}
@@ -38,17 +67,16 @@ jobs:
           mv "$TMP_FILE" README.md
 
       - name: Commit and push changes
+        if: steps.mdcheck.outputs.changed_count != '0'
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
-          # Synchronisation sécurisée
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git fetch origin main
           git reset --hard origin/main
-          
+
           if ! git diff --quiet; then
             git add README.md
-            git commit -m "📚 Mise à jour dynamique de la documentation"
+            git commit -m "📚 Mise à jour automatique de la documentation"
             git pull --rebase origin main
             git push origin main
           else
