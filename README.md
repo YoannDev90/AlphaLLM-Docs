@@ -1,4 +1,7 @@
 # AlphaLLM - Bot Documentation
 
-<!-- DOCS_START -->
-<!-- DOCS_END -->
+<!-- START_CONTENT -->
+<!-- END_CONTENT -->
+
+<!-- FILE_TREE_START -->
+<!-- FILE_TREE_END -->
