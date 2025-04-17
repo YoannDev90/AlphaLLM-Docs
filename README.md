@@ -19,6 +19,7 @@
 └── tree.txt
 
 4 directories, 11 files
+```
 <!-- FILE_TREE_END -->
 
 <!-- START_CONTENT -->

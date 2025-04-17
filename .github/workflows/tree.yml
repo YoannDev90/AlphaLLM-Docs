@@ -19,7 +19,7 @@ jobs:
           tree -I '.git|node_modules' -a -F > tree.txt
           echo '```' > tree_block.txt
           cat tree.txt >> tree_block.txt
-          echo '```'
+          echo '```' >> tree_block.txt
 
 
       - name: Insert file tree into README
