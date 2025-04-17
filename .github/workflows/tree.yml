@@ -15,16 +15,12 @@ jobs:
 
       - name: Generate file tree
         run: |
-          # Installe tree si besoin
           sudo apt-get update && sudo apt-get install -y tree
-
-          # Génère l'arborescence, ignore .git et README.md
           tree -I '.git|node_modules' -a -F > tree.txt
-
-          # Prépare le bloc à insérer dans le README
-          echo '```
+          echo '```'
           cat tree.txt >> tree_block.txt
           echo '```' >> tree_block.txt
+
 
       - name: Insert file tree into README
         run: |
