@@ -5,7 +5,7 @@
 | Émoji | Paramètre     | Description                                                                 | Valeur par défaut |
 |-------|---------------|-----------------------------------------------------------------------------|-------------------|
 | 📝    | `prompt`      | Description détaillée de l'image (**obligatoire**)                         | -                 |
-| ⚙️    | `model`      | Choix du modèle (`Flux` ou `SDXL`)                                         | `Flux`            |
+| ⚙️    | `model`      | Choix du modèle (`Flux` ou `Turbo`)                                         | `Flux`            |
 | 📐    | `size`      | Dimensions au format `{largeur}x{hauteur}`                                     | `1024x1024`       |
 | 🔒    | `private`      | `True` pour garder l'image privée                                          | `False`           |
 | 🧠    | `enhance`| `True` pour amélioration automatique du prompt par IA                      | `False`           |
@@ -16,15 +16,9 @@
 ```
 ![Un phare futuriste sur une planète extraterrestre, aurores boréales](assets/lighthouse.png)
 
-## 🌟 `/multimage` - Génération multiple
-**Paramètres additionnels** :
-| Émoji | Paramètre | Description                          | Valeur par défaut |
-|-------|-----------|--------------------------------------|-------------------|
-| 🔢    | `number`  | Nombre d'images (max 4)              | `2`               |
-
 **Exemple avancé** :
 ```html
-/multimage prompt:"Un loup blanc majestueux se tient sur un rocher moussu au milieu d'une ancienne forêt enchantée à l'aube. La fourrure du loup est illuminée par la douce lumière dorée du soleil qui filtre à travers les grands pins brumeux. De minuscules lucioles bleues flottent autour de lui et de délicates fleurs sauvages fleurissent à ses pieds. La scène est peinte dans un style hyperréaliste, avec des détails complexes sur la fourrure du loup et la texture de la mousse. L'atmosphère est sereine, magique et légèrement mystérieuse, évoquant le sentiment d'une illustration de conte de fées." number:3 size:1024x768 enhance:True
+/multimage prompt:"Un loup blanc majestueux se tient sur un rocher moussu au milieu d'une ancienne forêt enchantée à l'aube. La fourrure du loup est illuminée par la douce lumière dorée du soleil qui filtre à travers les grands pins brumeux. De minuscules lucioles bleues flottent autour de lui et de délicates fleurs sauvages fleurissent à ses pieds. La scène est peinte dans un style hyperréaliste, avec des détails complexes sur la fourrure du loup et la texture de la mousse. L'atmosphère est sereine, magique et légèrement mystérieuse, évoquant le sentiment d'une illustration de conte de fées." size:1024x768 enhance:True
 ```
 
 ![Un loup blanc majestueux se tient sur un rocher moussu au milieu d'une ancienne forêt enchantée à l'aube. La fourrure du loup est illuminée par la douce lumière dorée du soleil qui filtre à travers les grands pins brumeux. De minuscules lucioles bleues flottent autour de lui et de délicates fleurs sauvages fleurissent à ses pieds. La scène est peinte dans un style hyperréaliste, avec des détails complexes sur la fourrure du loup et la texture de la mousse. L'atmosphère est sereine, magique et légèrement mystérieuse, évoquant le sentiment d'une illustration de conte de fées.](assets/wolf.png)
@@ -39,11 +33,10 @@
 
 > ⚠️ **Limitations** :
 > - Taille maximale : `2048x2048`
-> - Génération multiple limitée à 4 images/commande
 > - Temps de traitement : ~10s/image en moyenne
 
 > 🔞 **NSFW** :
-> - NSFW possible dans les salons NSFW uniquement, en MP, dans les serveurs autorisants la génération de NSFW 
+> - NSFW non disponible pour le moment
 > - Vous êtes responsables des images produites, des poursuites sont possibles pour les contenus incluant de la pédopornographie
 
 ## 🎨 Exemples de résultats
@@ -53,7 +46,7 @@
 **Paramètres de génération** :  
 | 📝 Prompt       | ⚙️ Modèle | 📐 Taille   | 🧠 Amélioration | 🔒 Privée |  
 |-----------------|----------|-------------|-----------------|----------|  
-| "Chat astronautique dans un vaisseau spatial, dessin animé Pixar" | SDXL | 1024x1024 | Non | Non | 
+| "Chat astronautique dans un vaisseau spatial, dessin animé Pixar" | Turbo | 1024x1024 | Non | Non | 
 
 
 ---
@@ -73,7 +66,7 @@
 **Paramètres de génération** :  
 | 📝 Prompt       | ⚙️ Modèle | 📐 Taille    | 🧠 Amélioration |
 |-----------------|----------|--------------|-----------------|
-| "Dragon cybernétique entouré de fleurs numériques, style steampunk" | SDXL | 1920x1080 | Oui |
+| "Dragon cybernétique entouré de fleurs numériques, style steampunk" | Turbo | 1920x1080 | Oui |
 
 
 ## 🔄 FAQ courante
